@@ -1,0 +1,10 @@
+.bottomPannel {
+    padding: 50px;
+    margin: 10px 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.halfDivision {
+    width: 50%;
+}

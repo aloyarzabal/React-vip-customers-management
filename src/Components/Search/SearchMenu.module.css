@@ -1,0 +1,37 @@
+.form {
+}
+.form label {
+  display: block;
+}
+.form input {
+  font: inherit;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 30rem;
+  max-width: 100%;
+}
+.form button {
+  font: inherit;
+  color: #c4d06a;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  border-radius: 25px;
+  padding: 0.5rem 2rem;
+  margin: 10px;
+}
+.form .find {
+  border: 1px solid #c4d06a;
+  background-color: #c4d06a;
+  color: white;
+}
+
+.form .find:hover,
+.form .find:active {
+  background-color: #8a9347;
+}
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}

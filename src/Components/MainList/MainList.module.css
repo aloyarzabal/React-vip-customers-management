@@ -1,0 +1,9 @@
+.mainList{
+    width: 50%;
+    height: 600px;
+    margin: 0.7rem 0 0 20px;
+    border: 1px solid lightgray;
+    border-top: 3px solid rgb(182, 180, 180);
+    box-shadow: 4px 4px 10px lightgray;
+    border-radius: 25px;
+}
