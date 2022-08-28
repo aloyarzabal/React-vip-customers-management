@@ -1,0 +1,38 @@
+.appButton {
+  background-color: #eee;
+  border: none;
+  padding: 1rem;
+  margin: 20px 5px;
+  font-size: 1.1rem;
+  width: 8em;
+  max-width: 100%;
+  border-radius: 1rem;
+  color: black;
+  box-shadow: 0 0.4rem #dfd9d9;
+  cursor: pointer;
+  transition: 0.3s transform;
+}
+
+.appButton:active {
+  color: white;
+  box-shadow: 0 0.2rem #dfd9d9;
+  transform:  translateY(0.4rem);
+}
+
+.appButton:hover:not(:disabled) {
+  background: #c4d06a;
+  color: white;
+  text-shadow: 0 0.1rem #bcb4b4;
+}
+
+.appButton:disabled {
+  cursor: auto;
+  color: grey;
+}
+
+.appButton img{
+    max-width: 100%;
+    width: 60px;
+    display: block;
+    margin: auto;
+}

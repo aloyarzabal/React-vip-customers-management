@@ -1,0 +1,11 @@
+.cardIcon {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: transparent;
+    width: 90%;
+    margin: auto;
+    border-radius: 25px;
+    padding: 0.5rem 2rem;
+    box-shadow: 4px 4px 10px lightgray;
+}
