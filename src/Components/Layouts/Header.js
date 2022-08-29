@@ -1,12 +1,12 @@
-import {Fragment} from 'react';
+import { Fragment } from 'react';
 
-//import shopLogo from './../../Assets/shopLogo.jpg';
+import shopLogo from './../../Assets/manantial_logo_transparrent.png';
 import classes from './Header.module.css';
 
 const Header = () => {
     return <Fragment>
         <header className={classes.header}>
-            <h1>Manantial natural</h1>
+            <img src={shopLogo} className={classes['main-image']} />
         </header>
     </Fragment>
 }
