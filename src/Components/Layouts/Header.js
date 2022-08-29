@@ -6,7 +6,7 @@ import classes from './Header.module.css';
 const Header = () => {
     return <Fragment>
         <header className={classes.header}>
-            <img src={shopLogo} className={classes['main-image']} />
+            <img src={shopLogo} className={classes['main-image']} alt='Oficial logo of the store'/>
         </header>
     </Fragment>
 }

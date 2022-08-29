@@ -1,7 +1,13 @@
-.form {
-}
+.form {}
+
 .form label {
   display: block;
+  position: absolute;
+  left: 15vw;
+  color: rgba(211, 211, 211, 0.768);
+  transform: translateY(-35px);
+  transition: 0.5s all;
+  font-size: 18px;
 }
 .form input {
   font: inherit;
@@ -9,7 +15,17 @@
   border-radius: 4px;
   width: 30rem;
   max-width: 100%;
+  margin: 7px;
+  height: 25px;
 }
+.form input:focus + label{
+  transform: translateY(-45px) translateX(-10px);
+  color: black;
+  background-color: white;
+  font-size: 12px;
+  padding: 0 6px;
+}
+
 .form button {
   font: inherit;
   color: #c4d06a;
@@ -20,6 +36,7 @@
   padding: 0.5rem 2rem;
   margin: 10px;
 }
+
 .form .find {
   border: 1px solid #c4d06a;
   background-color: #c4d06a;
@@ -30,6 +47,7 @@
 .form .find:active {
   background-color: #8a9347;
 }
+
 .actions {
   display: flex;
   justify-content: flex-end;
