@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { MainTaskContext } from "../../App";
 
 import Card from "../UI/Card";
@@ -7,7 +7,6 @@ import classes from "./SearchMenu.module.css";
 
 
 const SearchMenu = (props) => {
-  // const [isSelected, setIsSelected] = useState(false);
 
   const { findCustomer} = useContext(MainTaskContext);
 

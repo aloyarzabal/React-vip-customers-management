@@ -1,0 +1,64 @@
+.customerFile {
+    list-style: none;
+    display: flex;
+    border-bottom: 2px solid gray;
+    padding: 10px;
+    margin: 10px;
+    justify-content: space-between;
+    max-width: 100%;
+}
+
+.customerFile div p{
+    margin: 5px 3px;
+    padding-left: 7px;
+    font-size: 1.2rem;
+    vertical-align: bottom;
+}
+.customerFile div h3{
+    margin: 10px;
+    font-size: 2rem;
+}
+.textDivision{
+    width: 87%;
+}
+.nameDivision,
+.mailBdayDivision,
+.genderPhoneDivision
+ {
+    display: flex;
+    max-width: 100%;
+    width: 100%;
+    justify-content: space-around;
+    align-items: baseline;
+}
+.nameDivision {
+    justify-content: start;
+}
+.nameDivision h3 ~ p{
+    padding: 0;
+}
+.mailBdayDivision {
+    min-width: 60%;
+}
+.mainStats{
+    margin:auto 0;
+    border-left: 2px solid lightgray;
+    padding-left: 20px;
+    width: 10%;
+}
+.mainStats div{
+    width: 98%;
+    padding-left: 0;
+}
+
+.iconTextdivision {
+    display: flex;
+    width: 30rem;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10px;
+}
+.iconTextdivision img{
+    max-width: 25px;
+    max-height: 25px;
+}
