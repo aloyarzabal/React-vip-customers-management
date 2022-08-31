@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import { MainTaskContext } from '../../App';
 
 import Icon from './Icon';
@@ -12,11 +12,12 @@ import newExpenseIcon from '../../Assets/spending.png';
 const MainIcons = props => {
 
     const { setNewExpense, setNewCustomer,
-            setFindCustomer,setCheckStats} = useContext(MainTaskContext);
+            setFindCustomer,setCheckStats, restoreList} = useContext(MainTaskContext);
 
     const restartAllStats = () => {
         setFindCustomer(false);
         setCheckStats(false);
+        restoreList();
     }
 
     const newExpenseHandler = () => {

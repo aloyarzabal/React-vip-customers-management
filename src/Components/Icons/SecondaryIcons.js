@@ -12,17 +12,30 @@ import pointsIcon from "../../Assets/exchange.png";
 
 const SecondaryIcons = (props) => {
 
-  const { checkStats, customerList, setCustomerList, setCheckStats  } = useContext(MainTaskContext);
+  const { checkStats, customerList, setCustomerList, DUMMY_CUSTOMERS } = useContext(MainTaskContext);
 
   const bestCustomerHandler = () => {
-    setCustomerList(customerList.sort((a, b) => b.spent_total_money - a.spent_total_money));
-    setCheckStats(false);
+    
+    DUMMY_CUSTOMERS.sort((a, b) => b.spent_total_money - a.spent_total_money);
+    setCustomerList([...DUMMY_CUSTOMERS]);  //React does not recognize the "change" as the array is the same (with different values)
+
   }
 
   const bestPointsHandler = () => {
+    
+    DUMMY_CUSTOMERS.sort((a, b) => b.accumulated_points - a.accumulated_points);
+    setCustomerList([...DUMMY_CUSTOMERS]); //React does not recognize the "change" as the array is the same (with different values)
+  }
 
-    setCustomerList(customerList.sort((a, b) => b.accumulated_points - a.accumulated_points));
-    setCheckStats(false);
+  const birthdayHandler = () => {
+
+    let createdDate = new Date();
+    let dd = String(createdDate.getDate()).padStart(2, '0');
+    let mm = String(createdDate.getMonth() + 1).padStart(2, '0');
+    let today = dd + '-' + mm;
+
+    const filteredCustomerList = DUMMY_CUSTOMERS.filter((a) => a.birthdate.includes(today));
+    setCustomerList(filteredCustomerList);
   }
 
 
@@ -32,7 +45,7 @@ const SecondaryIcons = (props) => {
       {checkStats && <IconCard>
         <Icon name={'Best Customers'} icon={crownIcon} onClick={bestCustomerHandler} />
         <Icon name={'Points'} icon={pointsIcon} onClick={bestPointsHandler} />
-        <Icon name={'Birthday'} icon={birthdayIcon} />
+        <Icon name={'Birthday'} icon={birthdayIcon} onClick={birthdayHandler} />
       </IconCard>}
     </Card>
   );
