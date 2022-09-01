@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { MainTaskContext } from '../../App';
 
 import Icon from './Icon';
@@ -8,16 +8,19 @@ import starIcon from '../../Assets/estrellaAmarilla.png';
 import statsIcon from '../../Assets/spreadsheet-app.png';
 import newCustomerIcon from '../../Assets/add-friend.png';
 import newExpenseIcon from '../../Assets/spending.png';
+import NewCustomer from '../NewCustomer/NewCustomer';
 
 const MainIcons = props => {
 
+    const [newCustomerisVisible, setNewCustomerIsVisible] = useState(false);
+
     const { setNewExpense, setNewCustomer,
-            setFindCustomer,setCheckStats, restoreList} = useContext(MainTaskContext);
+            setFindCustomer,setCheckStats} = useContext(MainTaskContext);
 
     const restartAllStats = () => {
         setFindCustomer(false);
         setCheckStats(false);
-        restoreList();
+        setNewCustomerIsVisible(false);
     }
 
     const newExpenseHandler = () => {
@@ -25,6 +28,7 @@ const MainIcons = props => {
      }
     const newCustomerHandler = () => {
         restartAllStats();
+        setNewCustomerIsVisible(true);
      }
 
     const findCustomerHandler = () => {
@@ -40,6 +44,7 @@ const MainIcons = props => {
     }
 
     return <IconCard>
+        {newCustomerisVisible && <NewCustomer onClose={restartAllStats} />}
         <Icon icon={newExpenseIcon} name={'New Expense'} onClick={newExpenseHandler}/>
         <Icon icon={newCustomerIcon} name={'New Customer'} onClick={newCustomerHandler}/>
         <Icon icon={starIcon} name={'Find Customer'} onClick={findCustomerHandler} />

@@ -18,6 +18,7 @@ const CustomerFile = (props) => {
                     <p>{props.surname}</p>
                     <p>{props.second_surname}</p>
                 </div>
+                
                 <div className={classes.mailBdayDivision}>
                     <div className={classes.iconTextdivision}>
                         <img src={emailIcon} alt='' />
@@ -34,6 +35,7 @@ const CustomerFile = (props) => {
                             <img src={maleIcon} alt='' />  :
                             <img src={femaleIcon} alt='' />
                         }</p>
+                        <p>{props.id}</p>
                     </div>
                     <div className={classes.iconTextdivision}>
                         <img src={phoneIcon} alt='' />
