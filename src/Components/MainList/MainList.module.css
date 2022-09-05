@@ -5,6 +5,7 @@
     border: 1px solid lightgray;
     border-top: 3px solid rgb(182, 180, 180);
     box-shadow: 4px 4px 10px lightgray;
+    background-color: #c4d06a26;
     border-radius: 25px;
     overflow-y: scroll;
     padding: 10px;
@@ -12,6 +13,5 @@
 }
 
 .mainList .resultNumber {
-    background-color: white;
     text-align: center;
 }

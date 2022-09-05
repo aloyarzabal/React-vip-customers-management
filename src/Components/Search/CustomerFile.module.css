@@ -1,18 +1,26 @@
 .customerFile {
     list-style: none;
     display: flex;
-    border-bottom: 2px solid gray;
     padding: 10px;
     margin: 10px;
     justify-content: space-between;
     max-width: 100%;
+    background: white;
+    box-shadow: 4px 4px 6px lightgrey;
+    border-radius: 10px;
+}
+
+.customerFile:hover {
+    background: rgba(0,0,0,0.081);
 }
 
 .customerFile div p{
     margin: 5px 3px;
     padding-left: 7px;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
+    font-family: 'Lato', sans-serif;
     vertical-align: bottom;
+    font-weight: 300;
 }
 .customerFile div h3{
     margin: 10px;
@@ -59,6 +67,5 @@
     padding-left: 10px;
 }
 .iconTextdivision img{
-    max-width: 25px;
-    max-height: 25px;
+    max-width: 17px;
 }

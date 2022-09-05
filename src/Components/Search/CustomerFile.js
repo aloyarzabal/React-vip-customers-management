@@ -1,12 +1,12 @@
 import classes from './CustomerFile.module.css';
 
-import maleIcon from './../../Assets/male.png';
-import femaleIcon from './../../Assets/female.png';
-import euroIcon from './../../Assets/euro.png';
-import pointsIcon from './../../Assets/coin.png';
-import phoneIcon from './../../Assets/phone.png';
-import emailIcon from './../../Assets/mail.png';
-import birthdayIcon from './../../Assets/birthday.png';
+import maleIcon from './../../Assets/male_thick.svg';
+import femaleIcon from './../../Assets/female_thick.svg';
+import euroIcon from './../../Assets/euro_thick.svg';
+import pointsIcon from './../../Assets/starAward_thick.svg';
+import phoneIcon from './../../Assets/phone_thick.png';
+import emailIcon from './../../Assets/email_thick.png';
+import birthdayIcon from './../../Assets/calendar_thick.png';
 
 
 const CustomerFile = (props) => {
@@ -31,21 +31,22 @@ const CustomerFile = (props) => {
                 </div>
                 <div className={classes.genderPhoneDivision}>
                     <div className={classes.iconTextdivision}>
-                        <p>{props.gender === 1 ?
+                        {props.gender === 1 ?
                             <img src={maleIcon} alt='' />  :
                             <img src={femaleIcon} alt='' />
-                        }</p>
+                        }
                         <p>{props.id}</p>
                     </div>
                     <div className={classes.iconTextdivision}>
                         <img src={phoneIcon} alt='' />
-                        <p>{props.phone}</p>
+                        {/* <p>{props.phone}</p> */}
+                        <p>{`${props.phone[0]}${props.phone[1]}${props.phone[2]}.${props.phone[3]}${props.phone[4]}${props.phone[5]}.${props.phone[6]}${props.phone[7]}${props.phone[8]}`}</p>
                     </div>
                 </div>
             </div>
             <div className={classes.mainStats}>
                 <div className={classes.iconTextdivision}>
-                    <img src={pointsIcon} alt='' />
+                    <img style={{transform: "scale(1.4)"}} src={pointsIcon} alt='' />
                     <p>{props.accumulated_points}</p>
                 </div>
                 <div className={classes.iconTextdivision}>
