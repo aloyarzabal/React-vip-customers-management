@@ -8,7 +8,7 @@
   padding-left: 10px;
 }
 
-.form label {
+.form>label {
   display: block;
   position: absolute;
   left: 14.5%;
@@ -19,7 +19,7 @@
   pointer-events: none;
 }
 
-.form input {
+.form>input {
   font: inherit;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -29,8 +29,8 @@
   height: 25px;
 }
 
-.form input:focus+label,
-.form input:valid+label {
+.form>input:focus+label,
+.form>input:valid+label {
   transform: translateY(-45px) translateX(-10px);
   color: black;
   background-color: white;
@@ -50,9 +50,9 @@
 }
 
 .form .find {
-  border: 1px solid #c4d06a;
   background-color: #c4d06a;
   color: white;
+  text-shadow: 1px 1px 5px black;
 }
 
 .form .find:hover,
@@ -66,6 +66,7 @@
   gap: 1rem;
 }
 
+.form .incorrectField,
 .incorrectData input {
   border: 1px solid lightcoral;
 }
@@ -82,4 +83,27 @@
 
 .inputBlock label {
   left: 15%;
+}
+
+.genderBlock {
+  margin: 10px auto;
+  padding: 20px 0;
+  max-width: 250px;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+.genderBlock >input {
+  display: none;
+}
+.genderBlock >input:checked +label {
+  background-color: #c4d06a87;  
+  box-shadow: 2px 2px 5px grey;
+}
+.genderBlock >label {
+  padding: 10px 20px;
+  margin: 3px;
+  border: 1px solid lightgray;
+  cursor: pointer;
+}
+.genderBlock >label:active {
 }
