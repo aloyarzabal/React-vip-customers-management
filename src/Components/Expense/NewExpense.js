@@ -1,18 +1,113 @@
-import { useContext, useRef, useState } from 'react';
+import { useContext, useReducer, useRef, useState } from 'react';
 import Modal from '../UI/Modal';
 import classes from '../Search/SearchMenu.module.css';
 import { MainTaskContext } from '../../App';
 
+const reducerFunction = (state, action) => {
+    if (action.type === 'INVALID_FORM') {
+        return {
+            validForm: false,
+            validUserData: true,
+            introducedQuantityPoints: true,
+            correctCustNumber: true,
+            correctPhoneNumber: true,
+            foundCustomer: true,
+            updatedQuantities: false
+        }
+    }
+    else if (action.type === 'INVALID_USER_DATA') {
+        return {
+            validForm: true,
+            validUserData: false,
+            introducedQuantityPoints: true,
+            correctCustNumber: true,
+            correctPhoneNumber: true,
+            foundCustomer: true,
+            updatedQuantities: false
+        }
+    }
+    else if (action.type === 'INVALID_QUANTITY_POINTS') {
+        return {
+            validForm: true,
+            validUserData: true,
+            introducedQuantityPoints: false,
+            correctCustNumber: true,
+            correctPhoneNumber: true,
+            foundCustomer: true,
+            updatedQuantities: false
+        }
+    }
+    else if (action.type === 'INVALID_CUSTOMER_NUMBER') {
+        return {
+            validForm: true,
+            validUserData: true,
+            introducedQuantityPoints: true,
+            correctCustNumber: false,
+            correctPhoneNumber: true,
+            foundCustomer: true,
+            updatedQuantities: false
+        }
+    }
+    else if (action.type === 'TOO_COINCIDENT_CUSTOMERS') {
+        return {
+            validForm: true,
+            validUserData: true,
+            introducedQuantityPoints: true,
+            correctCustNumber: true,
+            correctPhoneNumber: true,
+            foundCustomer: false,
+            updatedQuantities: false
+        }
+    }
+    else if (action.type === 'CORRECT_FORM') {
+        return {
+            validForm: true,
+            validUserData: true,
+            introducedQuantityPoints: true,
+            correctCustNumber: true,
+            correctPhoneNumber: true,
+            foundCustomer: true,
+            updatedQuantities: false
+        }
+    }
+    else if (action.type === 'QUANTITY_ADDED') {
+        return {
+            validForm: true,
+            validUserData: true,
+            introducedQuantityPoints: true,
+            correctCustNumber: true,
+            correctPhoneNumber: true,
+            foundCustomer: true,
+            updatedQuantities: true
+        }
+    }
+    else if (action.type === 'INVALID_PHONE_NUMBER') {
+        return {
+            validForm: true,
+            validUserData: true,
+            introducedQuantityPoints: true,
+            correctCustNumber: true,
+            correctPhoneNumber: false,
+            foundCustomer: true,
+            updatedQuantities: false
+        }
+    }
+}
+
 
 const NewExpense = (props) => {
 
-    const [validForm, setValidForm] = useState(true);
-    const [updatedQuantities, setUpdatedQuantities] = useState(false);
-    const [validUserData, setValidUserData] = useState(true);
-    const [foundCustomer, setFoundCustomer] = useState(true);
-    const [introducedQuantityPoints, setIntroducedQuantityPoints] = useState(true);
-    const [correctCustNumber, setCorrectCustNumber] = useState(true);
-    const [foundCustNumber, setFoundCustNumber] = useState({ found: false, number: 0, name: '' });
+    const [state, dispatch] = useReducer(reducerFunction, {
+        validForm: true,
+        validUserData: true,
+        introducedQuantityPoints: true,
+        correctCustNumber: true,
+        correctPhoneNumber: true,
+        foundCustomer: true,
+        updatedQuantities: false
+    });
+
+    const [foundCustNumber, setFoundCustNumber] = useState({ found: false, number: 0, name: 'Not found' });
     const [customersFound, setCustomersFound] = useState(0);
 
     const { DUMMY_CUSTOMERS } = useContext(MainTaskContext);
@@ -42,7 +137,6 @@ const NewExpense = (props) => {
                     name: filteredCustomerList[0].name + ' ' + filteredCustomerList[0].surname
                 });
                 quantityRef.current.focus();
-                setCorrectCustNumber(true);
             } else {
 
                 setFoundCustNumber({
@@ -51,10 +145,49 @@ const NewExpense = (props) => {
                     name: 'Not Found'
                 });
             }
-
+            dispatch({ type: 'CORRECT_FORM' });
+        }
+        else if (introducedCustomerNumber.length === 0) {
+            dispatch({ type: 'CORRECT_FORM' });
+            return;
         }
         else {
-            setCorrectCustNumber(false);
+            dispatch({ type: 'INVALID_CUSTOMER_NUMBER' });
+        }
+    }
+
+    const phoneHandler = () => {
+        const introducedPhone = phoneRef.current.value;
+        let filteredCustomerList = [...DUMMY_CUSTOMERS];
+
+        if (introducedPhone.length === 9) {
+            filteredCustomerList = filteredCustomerList.filter(
+                (a) => a.phone.includes(introducedPhone)
+            );
+            if (filteredCustomerList.length === 1) {
+
+                setFoundCustNumber({
+                    found: true,
+                    number: filteredCustomerList[0].customer_number,
+                    name: filteredCustomerList[0].name + ' ' + filteredCustomerList[0].surname
+                });
+                quantityRef.current.focus();
+            } else {
+
+                setFoundCustNumber({
+                    found: true,
+                    number: 0,
+                    name: 'Not Found'
+                });
+            }
+            dispatch({ type: 'CORRECT_FORM' });
+        }
+        else if (introducedPhone.length === 0) {
+            dispatch({ type: 'CORRECT_FORM' });
+            return;
+        }
+        else {
+            dispatch({ type: 'INVALID_PHONE_NUMBER' });
         }
     }
 
@@ -71,26 +204,17 @@ const NewExpense = (props) => {
 
         if (!introducedCustomerNumber && !introducedName && !introducedSurname &&
             !introducedPhone && !introducedEmail && !introducedQuantity && !introducedPoints) {
-            setValidForm(false);
-            setValidUserData(true);
-            setIntroducedQuantityPoints(true);
+            dispatch({ type: 'INVALID_FORM' });
         }
         else if (!introducedCustomerNumber && !introducedName && !introducedSurname && !introducedPhone && !introducedEmail) {
             cusnumberRef.current.focus();
-            setValidUserData(false);
-            setValidForm(true);
-            setIntroducedQuantityPoints(true);
+            dispatch({ type: 'INVALID_USER_DATA' });
         }
         else if (!introducedQuantity || !introducedPoints) {
-            setIntroducedQuantityPoints(false);
-            setValidForm(true);
-            setValidUserData(true);
+            dispatch({ type: 'INVALID_QUANTITY_POINTS' });
             introducedQuantity ? pointsRef.current.focus() : quantityRef.current.focus();
         }
         else {
-            setValidForm(true);
-            setIntroducedQuantityPoints(true);
-            setValidUserData(true);
 
             let filteredCustomerList = [...DUMMY_CUSTOMERS];
 
@@ -101,7 +225,7 @@ const NewExpense = (props) => {
                     );
                 }
                 else
-                    setCorrectCustNumber(false);
+                    dispatch({ type: 'INVALID_CUSTOMER_NUMBER' });
             }
             if (introducedName) {
                 const trimmedName = introducedName.trim().toLowerCase();
@@ -130,20 +254,21 @@ const NewExpense = (props) => {
                 quantityRef.current.value = '';
                 pointsRef.current.value = '';
 
-                setUpdatedQuantities(true);
+                dispatch({ type: 'QUANTITY_ADDED' });
 
             }
             else {
-                setFoundCustomer(false);
+                dispatch({ type: 'TOO_COINCIDENT_CUSTOMERS' });
                 setCustomersFound(filteredCustomerList.length);
             }
         }
     }
 
-    const formClasses = `${classes.form} ${validForm ? '' : classes.incorrectData}`;
-    const inputDataClasses = `${validUserData ? '' : classes.incorrectField}`;
-    const inputQuantityClasses = `${introducedQuantityPoints ? '' : classes.incorrectField}`;
-    const customerNumberClasses = `${inputDataClasses} ${correctCustNumber ? '' : classes.incorrectField}`;
+    const formClasses = `${classes.form} ${state.validForm ? '' : classes.incorrectData}`;
+    const inputDataClasses = `${state.validUserData ? '' : classes.incorrectField}`;
+    const inputQuantityClasses = `${state.introducedQuantityPoints ? '' : classes.incorrectField}`;
+    const customerNumberClasses = `${inputDataClasses} ${state.correctCustNumber ? '' : classes.incorrectField}`;
+    const phoneClasses = `${inputDataClasses} ${state.correctPhoneNumber ? '' : classes.incorrectField}`;
 
     return <Modal onClose={props.onClose}>
         <form className={formClasses}>
@@ -151,20 +276,26 @@ const NewExpense = (props) => {
 
             <input type="text" ref={cusnumberRef} className={customerNumberClasses} onBlur={customerNumberHandler} required></input>
             <label>Customer number</label>
-            {foundCustNumber.found && <p className={classes.customerDataFound}> {foundCustNumber.name}</p>}
-
+            <div className={classes.fastCheckContainer}>
+                <p className={classes.fastCheck}>Fast check</p>
+            </div>
             <input type="text" ref={nameRef} className={inputDataClasses} required></input>
             <label>Name</label>
 
             <input type="text" ref={surnameRef} className={inputDataClasses} required></input>
             <label>Surname</label>
 
-            <input type="text" ref={phoneRef} className={inputDataClasses} required></input>
+            <input type="text" ref={phoneRef} className={phoneClasses} onBlur={phoneHandler} required></input>
             <label>Phone</label>
+            <div className={classes.fastCheckContainer}>
+                <p className={classes.fastCheck}>Fast check</p>
+            </div>
 
             <input type="type" ref={mailRef} className={inputDataClasses} required></input>
             <label>E-mail</label>
-
+            <div>
+                <p className={classes.customerDataFound}>Found: <b>{foundCustNumber.found && foundCustNumber.name}</b></p>
+            </div>
             <input type="type" ref={quantityRef} className={inputQuantityClasses} required></input>
             <label>Quantity</label>
 
@@ -172,13 +303,14 @@ const NewExpense = (props) => {
             <label>Generated points</label>
 
             <div className={classes.incorrectData}>
-                {!validUserData && <p>At least one data field has to be introduced!</p>}
-                {!validForm && <p>One data field, quantity and points has to be fulfilled.</p>}
-                {!introducedQuantityPoints && <p>Please set the money spent and the generated points.</p>}
-                {!foundCustomer && <p>Found {customersFound} customers with this data, please limit the information.</p>}
-                {!correctCustNumber && <p>Customer number has to have 5 digits.</p>}
+                {!state.validUserData && <p>At least one data field has to be introduced!</p>}
+                {!state.validForm && <p>One data field, quantity and points has to be fulfilled.</p>}
+                {!state.introducedQuantityPoints && <p>Please set the money spent and the generated points.</p>}
+                {!state.foundCustomer && <p>Found {customersFound} customers with this data, please limit the information.</p>}
+                {!state.correctCustNumber && <p>Customer number has to have 5 digits.</p>}
+                {!state.correctPhoneNumber && <p>Phone number has to have 9 digits.</p>}
             </div>
-            {updatedQuantities && <p> Amounts properly added!</p>}
+            {state.updatedQuantities && <p> Amounts properly added!</p>}
             <div className={classes.actions}>
                 <button onClick={newExpenseHandler} className={classes.find}> Create</button>
                 <button type="button" onClick={props.onClose}>

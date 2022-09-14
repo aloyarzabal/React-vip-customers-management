@@ -59,7 +59,9 @@
 .form .find:active {
   background-color: #8a9347;
 }
-
+.form div b{
+  font-size: 1.1rem;
+}
 .actions {
   display: flex;
   justify-content: flex-end;
@@ -76,7 +78,7 @@
   border: 2px solid lightgray;
 }
 
-.incorrectData p,
+.incorrectData > p,
 .incorrectField ~ p {
   font-style: italic;
   font-size: 1.2rem;
@@ -107,11 +109,20 @@
   border: 1px solid lightgray;
   cursor: pointer;
 }
-.genderBlock >label:active {
-}
 
 .customerDataFound {
   margin: 0;
   font-size: 0.8rem;
   font-style: italic;
+}
+.fastCheckContainer{
+  position: relative;  
+  width: 58%;
+}
+.fastCheck{
+  position: absolute;
+  right: -52%;
+  transform: translateY(-55px);
+  font-size: 0.7rem;
+  background: white;
 }
