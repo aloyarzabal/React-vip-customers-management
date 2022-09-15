@@ -97,6 +97,18 @@ const reducerFunction = (state, action) => {
 
 const NewExpense = (props) => {
 
+    async function postExpenseHandler(customer) {
+        
+        const URL = 'https://1uou5mdl.directus.app/items/Clientes/' + customer.id;
+        const response = await fetch(URL, {
+            method: 'PATCH',
+            body: JSON.stringify(customer),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+    }
+
     const [state, dispatch] = useReducer(reducerFunction, {
         validForm: true,
         validUserData: true,
@@ -110,7 +122,7 @@ const NewExpense = (props) => {
     const [foundCustNumber, setFoundCustNumber] = useState({ found: false, number: 0, name: 'Not found' });
     const [customersFound, setCustomersFound] = useState(0);
 
-    const { DUMMY_CUSTOMERS } = useContext(MainTaskContext);
+    const { clientsList } = useContext(MainTaskContext);
 
     const cusnumberRef = useRef(null);
     const nameRef = useRef(null);
@@ -123,7 +135,7 @@ const NewExpense = (props) => {
 
     const customerNumberHandler = () => {
         const introducedCustomerNumber = cusnumberRef.current.value;
-        let filteredCustomerList = [...DUMMY_CUSTOMERS];
+        let filteredCustomerList = [...clientsList];
 
         if (introducedCustomerNumber.length === 5) {
             filteredCustomerList = filteredCustomerList.filter(
@@ -158,7 +170,7 @@ const NewExpense = (props) => {
 
     const phoneHandler = () => {
         const introducedPhone = phoneRef.current.value;
-        let filteredCustomerList = [...DUMMY_CUSTOMERS];
+        let filteredCustomerList = [...clientsList];
 
         if (introducedPhone.length === 9) {
             filteredCustomerList = filteredCustomerList.filter(
@@ -216,7 +228,7 @@ const NewExpense = (props) => {
         }
         else {
 
-            let filteredCustomerList = [...DUMMY_CUSTOMERS];
+            let filteredCustomerList = [...clientsList];
 
             if (introducedCustomerNumber) {
                 if (introducedCustomerNumber.length === 5) {
@@ -255,6 +267,7 @@ const NewExpense = (props) => {
                 pointsRef.current.value = '';
 
                 dispatch({ type: 'QUANTITY_ADDED' });
+                postExpenseHandler(filteredCustomerList[0]);
 
             }
             else {
@@ -291,15 +304,15 @@ const NewExpense = (props) => {
                 <p className={classes.fastCheck}>Fast check</p>
             </div>
 
-            <input type="type" ref={mailRef} className={inputDataClasses} required></input>
+            <input type="text" ref={mailRef} className={inputDataClasses} required></input>
             <label>E-mail</label>
             <div>
                 <p className={classes.customerDataFound}>Found: <b>{foundCustNumber.found && foundCustNumber.name}</b></p>
             </div>
-            <input type="type" ref={quantityRef} className={inputQuantityClasses} required></input>
+            <input type="number" min={0} max={5000} ref={quantityRef} className={inputQuantityClasses} required></input>
             <label>Quantity</label>
 
-            <input type="type" ref={pointsRef} className={inputQuantityClasses} required></input>
+            <input type="number" min={0} max={5000} ref={pointsRef} className={inputQuantityClasses} required></input>
             <label>Generated points</label>
 
             <div className={classes.incorrectData}>

@@ -15,7 +15,7 @@ const SearchMenu = (props) => {
   const emailRef = useRef(null);
 
 
-  const { findCustomer, DUMMY_CUSTOMERS, setCustomerList } = useContext(MainTaskContext);
+  const { findCustomer, clientsList, setCustomerList } = useContext(MainTaskContext);
 
   const findPersonHandler = (event) => {
     event.preventDefault();
@@ -33,7 +33,7 @@ const SearchMenu = (props) => {
     else {
       setValidForm(true);
 
-      let filteredCustomerList = [...DUMMY_CUSTOMERS];
+      let filteredCustomerList = [...clientsList];
 
       if(introducedCNumber){
         filteredCustomerList = filteredCustomerList.filter((a) => String(a.customer_number).includes(introducedCNumber)

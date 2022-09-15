@@ -12,19 +12,19 @@ import pointsIcon from "../../Assets/exchange.png";
 
 const SecondaryIcons = (props) => {
 
-  const { checkStats, customerList, setCustomerList, DUMMY_CUSTOMERS } = useContext(MainTaskContext);
+  const { checkStats, setCustomerList, clientsList } = useContext(MainTaskContext);
 
   const bestCustomerHandler = () => {
     
-    DUMMY_CUSTOMERS.sort((a, b) => b.spent_total_money - a.spent_total_money);
-    setCustomerList([...DUMMY_CUSTOMERS]);  //React does not recognize the "change" as the array is the same (with different values)
+    clientsList.sort((a, b) => b.spent_total_money - a.spent_total_money);
+    setCustomerList([...clientsList]);  //React does not recognize the "change" as the array is the same (with different values)
 
   }
 
   const bestPointsHandler = () => {
     
-    DUMMY_CUSTOMERS.sort((a, b) => b.accumulated_points - a.accumulated_points);
-    setCustomerList([...DUMMY_CUSTOMERS]); //React does not recognize the "change" as the array is the same (with different values)
+    clientsList.sort((a, b) => b.accumulated_points - a.accumulated_points);
+    setCustomerList([...clientsList]); //React does not recognize the "change" as the array is the same (with different values)
   }
 
   const birthdayHandler = () => {
@@ -34,7 +34,7 @@ const SecondaryIcons = (props) => {
     let mm = String(createdDate.getMonth() + 1).padStart(2, '0');
     let today = dd + '-' + mm;
 
-    const filteredCustomerList = DUMMY_CUSTOMERS.filter((a) => a.birthdate.includes(today));
+    const filteredCustomerList = clientsList.filter((a) => a.birthdate.includes(today));
     setCustomerList(filteredCustomerList);
   }
 

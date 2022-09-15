@@ -24,8 +24,6 @@ const MainList = props => {
     />
   )
 
-  const totalResults = `Results`;
-
   return (
     <Fragment>
       <ul className={classes.mainList}>

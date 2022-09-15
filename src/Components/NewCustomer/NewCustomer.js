@@ -39,6 +39,19 @@ const reducerFunction = (state, action) => {
 
 const NewCustomer = (props) => {
 
+    async function postCustomersHandler(customer) {
+        const response = await fetch('https://1uou5mdl.directus.app/items/Clientes/', {
+            method: 'POST',
+            body: JSON.stringify(customer),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+
+        console.log(data.data);
+    }
+
     const [state, dispatch] = useReducer(reducerFunction, {
         validCustomer: true,
         customerCreated: false,
@@ -51,7 +64,7 @@ const NewCustomer = (props) => {
     const [validPhoneFormat, setValidPhoneFormat] = useState(true);
 
 
-    const { DUMMY_CUSTOMERS } = useContext(MainTaskContext);
+    const { clientsList } = useContext(MainTaskContext);
 
     const surnameRef = useRef(null);
     const nameRef = useRef(null);
@@ -86,7 +99,8 @@ const NewCustomer = (props) => {
 
             if (introducedPhone.length === 9 && introducedEmail.includes('@')) {
 
-                let filteredCustomerList = [...DUMMY_CUSTOMERS];
+                let filteredCustomerList = [...clientsList];
+                console.log(typeof (clientsList));
 
                 if (filteredCustomerList.filter((a) => a.phone.includes(introducedPhone)).length > 0) {
                     dispatch({ type: "INVALID_PHONE" });
@@ -117,7 +131,8 @@ const NewCustomer = (props) => {
                         spent_total_money: 0
                     }
 
-                    DUMMY_CUSTOMERS.push(customerToAdd);
+                    clientsList.push(customerToAdd);
+                    postCustomersHandler(customerToAdd);
 
                     surnameRef.current.value = '';
                     secondSurnameRef.current.value = '';

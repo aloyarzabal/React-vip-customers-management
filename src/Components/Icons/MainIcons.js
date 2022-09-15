@@ -16,8 +16,7 @@ const MainIcons = props => {
     const [newCustomerisVisible, setNewCustomerIsVisible] = useState(false);
     const [newExpenseisVisible, setNewExpenseIsVisible] = useState(false);
 
-    const { setNewExpense, setNewCustomer,
-            setFindCustomer,setCheckStats} = useContext(MainTaskContext);
+    const { setFindCustomer,setCheckStats} = useContext(MainTaskContext);
 
     const restartAllStats = () => {
         setFindCustomer(false);
