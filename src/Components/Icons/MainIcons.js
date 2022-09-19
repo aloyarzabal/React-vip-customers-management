@@ -43,13 +43,11 @@ const MainIcons = props => {
     const statsHandler = () => {
         restartAllStats();
         setCheckStats(true);
-        // console.log(`CheckStats ${checkStats}`);
-        // console.log(`Find Customer ${findCustomer}`);
     }
 
     return <IconCard>
-        {newCustomerisVisible && <NewCustomer onClose={restartAllStats} />}
-        {newExpenseisVisible && <NewExpense onClose={restartAllStats} />}
+        {newCustomerisVisible && <NewCustomer onClose={restartAllStats} show={newCustomerisVisible}/>}
+        {newExpenseisVisible && <NewExpense onClose={restartAllStats} show={newExpenseisVisible} />}
         <Icon icon={newExpenseIcon} name={'New Expense'} onClick={newExpenseHandler}/>
         <Icon icon={newCustomerIcon} name={'New Customer'} onClick={newCustomerHandler}/>
         <Icon icon={starIcon} name={'Find Customer'} onClick={findCustomerHandler} />

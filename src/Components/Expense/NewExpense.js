@@ -283,8 +283,9 @@ const NewExpense = (props) => {
     const inputQuantityClasses = `${state.introducedQuantityPoints ? '' : classes.incorrectField}`;
     const customerNumberClasses = `${inputDataClasses} ${state.correctCustNumber ? '' : classes.incorrectField}`;
     const phoneClasses = `${inputDataClasses} ${state.correctPhoneNumber ? '' : classes.incorrectField}`;
+    
 
-    return <Modal onClose={props.onClose}>
+    return <Modal onClose={props.onClose} show={props.show}>
         <form className={formClasses}>
             <h3>New expense</h3>
 
