@@ -2,6 +2,7 @@ import { useContext, useReducer, useRef, useState } from 'react';
 import Modal from '../UI/Modal';
 import classes from '../Search/SearchMenu.module.css';
 import { MainTaskContext } from '../../App';
+import React from 'react';
 
 const reducerFunction = (state, action) => {
     if (action.type === 'INVALID_FORM') {

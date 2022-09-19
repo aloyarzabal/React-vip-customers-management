@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import React from 'react';
 
 import shopLogo from './../../Assets/manantial_logo_transparrent.png';
 import classes from './Header.module.css';

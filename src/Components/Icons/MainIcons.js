@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { MainTaskContext } from '../../App';
+import React from 'react';
 
 import Icon from './Icon';
 import IconCard from './IconCard';
