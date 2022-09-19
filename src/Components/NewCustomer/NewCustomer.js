@@ -138,7 +138,7 @@ const NewCustomer = (props) => {
     const phoneClasses = `${(validPhoneFormat && state.validNewPhone) ? '' : classes.incorrectField}`;
     const emailClasses = `${(validEmailFormat && state.validNewEmail) ? '' : classes.incorrectField}`;
 
-    return <Modal onClose={props.onClose}>
+    return <Modal onClose={props.onClose} show={props.show}>
         <form className={formClasses}>
             <h3>New customer data</h3>
 

@@ -49,8 +49,8 @@ const MainIcons = props => {
     }
 
     return <IconCard>
-        {newCustomerisVisible && <NewCustomer onClose={restartAllStats} />}
-        {newExpenseisVisible && <NewExpense onClose={restartAllStats} />}
+        {newCustomerisVisible && <NewCustomer show={newCustomerisVisible} onClose={restartAllStats} />}
+        {newExpenseisVisible && <NewExpense show={newExpenseisVisible} onClose={restartAllStats} />}
         <Icon icon={newExpenseIcon} name={'New Expense'} onClick={newExpenseHandler}/>
         <Icon icon={newCustomerIcon} name={'New Customer'} onClick={newCustomerHandler}/>
         <Icon icon={starIcon} name={'Find Customer'} onClick={findCustomerHandler} />
