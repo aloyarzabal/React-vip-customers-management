@@ -1,5 +1,6 @@
 import { useContext, useRef, useState } from "react";
 import { MainTaskContext } from "../../App";
+import React from "react";
 
 import Card from "../UI/Card";
 import classes from "./SearchMenu.module.css";

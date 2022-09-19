@@ -2,6 +2,7 @@ import { Fragment, useContext } from "react";
 import { MainTaskContext } from "../../App";
 import CustomerFile from "../Search/CustomerFile";
 import classes from './MainList.module.css';
+import React from "react";
 
 const MainList = props => {
   const { customerList } = useContext(MainTaskContext);

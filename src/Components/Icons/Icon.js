@@ -1,4 +1,5 @@
 import classes from './Icon.module.css';
+import React from 'react';
 
 const Icon = props => {
     return <div className={classes.appButton} onClick={props.onClick} >

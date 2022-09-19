@@ -1,4 +1,5 @@
 import classes from './CustomerFile.module.css';
+import React from 'react';
 
 import maleIcon from './../../Assets/male_thick.svg';
 import femaleIcon from './../../Assets/female_thick.svg';
