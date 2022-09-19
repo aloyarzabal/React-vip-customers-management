@@ -1,6 +1,11 @@
 # Welcome to my first project with React!
 
-This project it's meant to help little stores to have a full control of he customers they have, the money they spend and the points they generate.
+This project it's meant to help little stores to have a full control of the customers they have, the money they spend and the points they generate.
+
+## Specifications
+* Project has been created 100% with React, using 5 of the basic Hooks.
+* In order to have a backend, it's connected to Directus (headless CMS) via fetch.
+* React transition group for some animations
 
 ## Branches
 
