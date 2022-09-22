@@ -8,26 +8,26 @@ const Backdrop = props => {
 };
 
 const ModalOverlay = props => {
-const nodeRef = useRef(null);
+    const nodeRef = useRef(null);
 
     return (
-            <CSSTransition
-                mountOnEnter
-                unmountOnExit
-                nodeRef={nodeRef}
-                in={props.show}
-                appear={props.show}
-                timeout={500}
-                // classNames="fade" 
-                classNames={{
-                    appear: classes.fadeAppear,
-                    appearActive: classes.fadeAppearActive
-                }}
-                >
-                <div ref={nodeRef} className={classes.Modal}>
-                    <div>{props.children}</div>
-                </div>
-            </CSSTransition>
+        <CSSTransition
+            mountOnEnter
+            unmountOnExit
+            nodeRef={nodeRef}
+            in={props.show}
+            appear={props.show}
+            timeout={500}
+            // classNames="fade" 
+            classNames={{
+                appear: classes.fadeAppear,
+                appearActive: classes.fadeAppearActive
+            }}
+        >
+            <div ref={nodeRef} className={classes.Modal}>
+                <div>{props.children}</div>
+            </div>
+        </CSSTransition>
     );
 };
 

@@ -6,6 +6,7 @@ import Card from "./Components/UI/Card";
 import Header from "./Components/Layouts/Header";
 import MainIcons from "./Components/Icons/MainIcons";
 import BottomPannel from "./Components/Layouts/BottomPannel";
+import Login from "./Components/Layouts/Login";
 
 // const clientsListDUM = [
 
@@ -106,24 +107,71 @@ import BottomPannel from "./Components/Layouts/BottomPannel";
 export const MainTaskContext = createContext(null);
 
 function App() {
-  const [clientsList, setClientsList] = useState([]);
 
   async function fetchCustomersHandler() {
-    const response = await fetch('https://1uou5mdl.directus.app/items/Clientes/', {method: 'GET'});
+    const response = await fetch('https://1uou5mdl.directus.app/items/Clientes?access_token=nkmP1vU2eZpzCHVbe2R5dIJxdYJYOJYN', { method: 'GET' });
     const data = await response.json();
     setClientsList(data.data);
   }
-
 
   useEffect(() => {
     fetchCustomersHandler();
   }, []);
 
+  const logOutHandler = () => {
+    localStorage.removeItem('token');
+    setLogedIn(false);
+  }
+
+  const loginHandler = (email, password) => {
+    //adolfomanantial@manantial.com
+    //Manantial1@
+    //nkmP1vU2eZpzCHVbe2R5dIJxdYJYOJYN
+    const url = 'https://1uou5mdl.directus.app/auth/login?access_token=nkmP1vU2eZpzCHVbe2R5dIJxdYJYOJYN';
+    setIsLoading(true);
+
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify({
+        email: email,
+        password: password
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then((res) => {
+      setIsLoading(false);
+
+      if (res.ok) {
+        setLogedIn(true);
+        localStorage.setItem('token', true);
+        return res.json();
+      }
+      else {
+        return res.json().then((data) => {
+          console.log(data);
+          let errorMessage = "Authentication failed!";
+          throw new Error(errorMessage);
+        });
+      }
+    }).then(data => {
+      console.log(data);
+    }).catch(err => {
+      alert(err.message);
+    });
+
+  }
+
+  const initialToken = localStorage.getItem('token');
+  const [loggedIn, setLogedIn] = useState(initialToken);
+
+  const [clientsList, setClientsList] = useState([]);
   const [findCustomer, setFindCustomer] = useState(false);
   const [checkStats, setCheckStats] = useState(false);
   const [newExpense, setNewExpense] = useState(false);
   const [newCustomer, setNewCustomer] = useState(false);
   const [customerList, setCustomerList] = useState(clientsList);
+  const [isLoading, setIsLoading] = useState(false);
 
 
   console.log('Estados en la app principal actualizados.')
@@ -139,9 +187,9 @@ function App() {
 
   return (
     <MainTaskContext.Provider value={mainTaskContext}>
-
+      {!loggedIn && <Login logIn={loginHandler} isLoading={isLoading} />}
       <div className="App">
-        <Header />
+        <Header close={logOutHandler} />
         <Card>
           <MainIcons />
           <BottomPannel />

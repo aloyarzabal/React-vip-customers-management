@@ -26,3 +26,24 @@
   top: 0;
   left: 10px;
 }
+
+.header>button {
+  position: absolute;
+  top: 0;
+  right: 17%;
+  margin: 10px;
+  padding: 10px 30px;
+  background-color: transparent;
+  border: 2px solid white;
+  color: #fff;
+  border-radius: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.header>button:hover {
+  background-color: white;
+  color: #c4d06a;
+}
