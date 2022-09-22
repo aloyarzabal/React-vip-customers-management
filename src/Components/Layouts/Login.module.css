@@ -1,0 +1,104 @@
+.loginForm {
+    text-align: center;
+}
+
+.loginForm>h2 {
+    text-align: center;
+    border-left: 5px solid black;
+    margin: 30px auto;
+}
+
+.loginForm>label {
+    display: block;
+    position: absolute;
+    left: 14.5%;
+    color: rgba(152, 151, 151, 0.982);
+    transform: translateY(-35px);
+    transition: 0.5s all;
+    font-size: 18px;
+    pointer-events: none;
+}
+
+.loginForm>input {
+    font: inherit;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    width: 31rem;
+    max-width: 100%;
+    margin: 7px;
+    height: 25px;
+}
+
+.loginForm>input:focus+label,
+.loginForm>input:valid+label {
+    transform: translateY(-45px) translateX(-10px);
+    color: black;
+    background-color: white;
+    font-size: 12px;
+    padding: 0 6px;
+}
+
+.loginForm>button {
+    display: block;
+    border-radius: 25px;
+    padding: 0.8rem 2.5rem;
+    margin: 30px auto;
+    cursor: pointer;
+    border: 1px solid white;
+    color: #fff;
+    font-weight: 700;    
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    transition: transform 0.4s ;
+    background: linear-gradient(90deg, #c4d06a, #c4d06ac1);
+}
+.loginForm>button:hover {
+    background: linear-gradient(90deg, #848c47, #c4d06ae9);
+    transform: translateY(-2px);
+}
+.loginBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 20;
+    background: linear-gradient(90deg, #c4d06a, #c4d06ac1);
+}
+
+.loginModal {
+    position: fixed;
+    top: 20vh;
+    left: 5%;
+    width: 90%;
+    padding: 1rem;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    z-index: 30;
+    animation: openLoginModal 0.6s ease-out forwards;
+    background: linear-gradient(180deg, #fcffe6, white);
+    transition: all 0.3s ease-out;
+}
+
+@media (min-width: 730px) {
+    .loginModal {
+        width: 40rem;
+        left: calc(50% - 20rem);
+    }
+}
+
+@keyframes openLoginModal {
+    0% {
+        opacity: 0;
+        transform: translateY(-50%);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translateY(10%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
