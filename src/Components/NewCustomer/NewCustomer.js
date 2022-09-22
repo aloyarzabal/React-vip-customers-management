@@ -5,6 +5,40 @@ import { MainTaskContext } from "../../App";
 import React from 'react';
 
 
+// const reducerFunction = (state, action) => {
+//     if (action.type === "INVALID_PHONE") {
+//         return {
+//             validCustomer: false,
+//             validNewPhone: false,
+
+//             customerCreated: false,
+//             validNewEmail: true,
+//             randomNewCustomerNumber: ''
+//         }
+//     }
+//     if (action.type === "INVALID_EMAIL") {
+//         return {
+//             validCustomer: false,
+//             validNewEmail: false,
+
+//             customerCreated: false,
+//             validNewPhone: true,
+//             randomNewCustomerNumber: ''
+
+//         }
+//     }
+//     if (action.type === "VALID_FORM") {
+//         return {
+//             customerCreated: true,
+//             validCustomer: true,
+//             validNewEmail: true,
+//             validNewPhone: true,
+//             randomNewCustomerNumber: state.randomNewCustomerNumber
+//         }
+//     }
+// }
+
+
 const reducerFunction = (state, action) => {
     if (action.type === "INVALID_PHONE") {
         return {
