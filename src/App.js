@@ -125,8 +125,6 @@ function App() {
 
   const loginHandler = (email, password) => {
     //adolfomanantial@manantial.com
-    //Manantial1@
-    //nkmP1vU2eZpzCHVbe2R5dIJxdYJYOJYN
     const url = 'https://1uou5mdl.directus.app/auth/login?access_token=nkmP1vU2eZpzCHVbe2R5dIJxdYJYOJYN';
     setIsLoading(true);
 
