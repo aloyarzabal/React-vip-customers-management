@@ -3,18 +3,41 @@
     display: flex;
     padding: 10px;
     margin: 10px;
-    justify-content: space-between;
+    justify-content: space-around;
     max-width: 100%;
-    background: white;
-    box-shadow: 4px 4px 6px lightgrey;
+    min-width: 500px;
+    background: linear-gradient(135deg, #c4d06a 10%, white 10%);
+    box-shadow: 4px 4px 6px grey;
     border-radius: 10px;
+    border: 1px solid lightgray;
 }
 
 .customerFile:hover {
-    background: rgba(0,0,0,0.081);
+    background: linear-gradient(135deg, #c4d06a 10%, #00000015 10%);
 }
 
-.customerFile div p{
+@media (max-width: 1300px) {
+    .customerFile {
+        transform: scale(0.9) translateX(-40px);
+    }
+}
+
+@media (max-width: 1200px) {
+    .genderPhoneDivision {
+        flex-wrap: wrap;
+    }
+}
+@media (max-width: 1100px) {
+    .customerFile {
+        display: block;
+    }
+    .mainStats {
+        border-left: 0px solid lightgray !important;
+        border-top: 2px solid lightgray;
+    }
+}
+
+.customerFile div p {
     margin: 5px 3px;
     padding-left: 7px;
     font-size: 1.3rem;
@@ -22,39 +45,47 @@
     vertical-align: bottom;
     font-weight: 300;
 }
-.customerFile div h3{
+
+.customerFile div h3 {
     margin: 10px;
     font-size: 1.8rem;
+    font-weight: 400;
 }
-.textDivision{
-    width: 85%;
+
+.textDivision {
+    width: 80%;
 }
+
 .nameDivision,
 .mailBdayDivision,
-.genderPhoneDivision
- {
+.genderPhoneDivision {
     display: flex;
     max-width: 100%;
     width: 100%;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: baseline;
 }
+
 .nameDivision {
     justify-content: start;
 }
-.nameDivision h3 ~ p{
+
+.nameDivision h3~p {
     padding: 0;
 }
+
 .mailBdayDivision {
     min-width: 60%;
 }
-.mainStats{
-    margin:auto 0;
+
+.mainStats {
+    margin: auto 0;
     border-left: 2px solid lightgray;
-    padding-left: 20px;
-    width: 12%;
+    padding-left: 10px;
+    width: 15%;
 }
-.mainStats div{
+
+.mainStats div {
     width: 98%;
     padding-left: 0;
 }
@@ -66,6 +97,7 @@
     align-items: center;
     padding-left: 10px;
 }
-.iconTextdivision img{
-    max-width: 17px;
+
+.iconTextdivision img {
+    max-width: 15px;
 }

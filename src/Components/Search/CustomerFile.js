@@ -15,19 +15,13 @@ const CustomerFile = (props) => {
         <li className={classes.customerFile}>
             <div className={classes.textDivision}>
                 <div className={classes.nameDivision}>
-                    <h3>{props.name}</h3>
-                    <p>{props.surname}</p>
-                    <p>{props.second_surname}</p>
+                    <h3>{props.name} {props.surname} {props.second_surname}</h3>
                 </div>
                 
                 <div className={classes.mailBdayDivision}>
                     <div className={classes.iconTextdivision}>
                         <img src={emailIcon} alt='' />
                         <p>{props.email}</p>
-                    </div>
-                    <div className={classes.iconTextdivision}>
-                        <img src={birthdayIcon} alt='' />
-                        <p>{props.birthdate}</p>
                     </div>
                 </div>
                 <div className={classes.genderPhoneDivision}>
@@ -42,6 +36,11 @@ const CustomerFile = (props) => {
                         <img src={phoneIcon} alt='' />
                         {/* <p>{props.phone}</p> */}
                         <p>{`${props.phone[0]}${props.phone[1]}${props.phone[2]}.${props.phone[3]}${props.phone[4]}${props.phone[5]}.${props.phone[6]}${props.phone[7]}${props.phone[8]}`}</p>
+                    </div>
+                    
+                    <div className={classes.iconTextdivision}>
+                        <img src={birthdayIcon} alt='' />
+                        <p>{props.birthdate}</p>
                     </div>
                 </div>
             </div>
