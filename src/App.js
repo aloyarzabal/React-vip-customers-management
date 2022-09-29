@@ -112,8 +112,7 @@ function App() {
     const response = await fetch('https://1uou5mdl.directus.app/items/Clientes?access_token=nkmP1vU2eZpzCHVbe2R5dIJxdYJYOJYN', {
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin' : '*'
+        'Content-Type': 'application/json'
       }
     });
     const data = await response.json();
