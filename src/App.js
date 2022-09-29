@@ -109,7 +109,13 @@ export const MainTaskContext = createContext(null);
 function App() {
 
   async function fetchCustomersHandler() {
-    const response = await fetch('https://1uou5mdl.directus.app/items/Clientes?access_token=nkmP1vU2eZpzCHVbe2R5dIJxdYJYOJYN', { method: 'GET' });
+    const response = await fetch('https://1uou5mdl.directus.app/items/Clientes?access_token=nkmP1vU2eZpzCHVbe2R5dIJxdYJYOJYN', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin' : true
+      }
+    });
     const data = await response.json();
     setClientsList(data.data);
   }
