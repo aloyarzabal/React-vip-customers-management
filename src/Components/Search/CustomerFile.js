@@ -17,7 +17,7 @@ const CustomerFile = (props) => {
                 <div className={classes.nameDivision}>
                     <h3>{props.name} {props.surname} {props.second_surname}</h3>
                 </div>
-                
+
                 <div className={classes.mailBdayDivision}>
                     <div className={classes.iconTextdivision}>
                         <img src={emailIcon} alt='' />
@@ -27,31 +27,45 @@ const CustomerFile = (props) => {
                 <div className={classes.genderPhoneDivision}>
                     <div className={classes.iconTextdivision}>
                         {props.gender === 1 ?
-                            <img src={maleIcon} alt='' />  :
+                            <img src={maleIcon} alt='' /> :
                             <img src={femaleIcon} alt='' />
                         }
-                        <p>{props.id}</p>
+                        <div>
+                            <p className={classes.tittleFeature}>Nº Cliente:</p>
+                            <p>{props.id}</p>
+                        </div>
                     </div>
                     <div className={classes.iconTextdivision}>
                         <img src={phoneIcon} alt='' />
-                        {/* <p>{props.phone}</p> */}
-                        <p>{`${props.phone[0]}${props.phone[1]}${props.phone[2]}.${props.phone[3]}${props.phone[4]}${props.phone[5]}.${props.phone[6]}${props.phone[7]}${props.phone[8]}`}</p>
+                        <div>
+                            <p className={classes.tittleFeature}>Telefono:</p>
+                            <p>{`${props.phone[0]}${props.phone[1]}${props.phone[2]}.${props.phone[3]}${props.phone[4]}${props.phone[5]}.${props.phone[6]}${props.phone[7]}${props.phone[8]}`}</p>
+                        </div>
                     </div>
-                    
+
                     <div className={classes.iconTextdivision}>
                         <img src={birthdayIcon} alt='' />
-                        <p>{props.birthdate}</p>
+                        <div>
+                            <p className={classes.tittleFeature}>Cumpleaños:</p>
+                            <p>{props.birthdate}</p>
+                        </div>
                     </div>
                 </div>
             </div>
             <div className={classes.mainStats}>
                 <div className={classes.iconTextdivision}>
-                    <img style={{transform: "scale(1.4)"}} src={pointsIcon} alt='' />
-                    <p>{props.accumulated_points}</p>
+                    <img style={{ transform: "scale(1.4)" }} src={pointsIcon} alt='' />
+                    <div>
+                        <p className={classes.tittleFeature}>Puntos:</p>
+                        <p>{props.accumulated_points}</p>
+                    </div>
                 </div>
-                <div className={classes.iconTextdivision}>
+                <div style={{marginTop:"15px"}} className={classes.iconTextdivision}>
                     <img src={euroIcon} alt='' />
-                    <p>{props.spent_total_money}</p>
+                    <div>
+                        <p className={classes.tittleFeature}>Total:</p>
+                        <p>{props.spent_total_money}</p>
+                    </div>
                 </div>
             </div>
         </li >
