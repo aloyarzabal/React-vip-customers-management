@@ -100,7 +100,7 @@ const NewExpense = (props) => {
 
     async function postExpenseHandler(customer) {
         
-        const URL = 'https://1uou5mdl.directus.app/items/Clientes/' + customer.id;
+        const URL = 'https://1uou5mdl.directus.app/items/Clientes/' + customer.id + '?access_token=nkmP1vU2eZpzCHVbe2R5dIJxdYJYOJYN';
         const response = await fetch(URL, {
             method: 'PATCH',
             body: JSON.stringify(customer),
@@ -289,7 +289,7 @@ const NewExpense = (props) => {
         <form className={formClasses}>
             <h3>New expense</h3>
 
-            <input type="text" ref={cusnumberRef} className={customerNumberClasses} onBlur={customerNumberHandler} required></input>
+            <input type="text" ref={cusnumberRef} autoFocus className={customerNumberClasses} onBlur={customerNumberHandler} required></input>
             <label>Customer number</label>
             <div className={classes.fastCheckContainer}>
                 <p className={classes.fastCheck}>Fast check</p>

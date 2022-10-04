@@ -75,7 +75,7 @@ const reducerFunction = (state, action) => {
 const NewCustomer = (props) => {
 
     async function postCustomersHandler(customer) {
-        const response = await fetch('https://1uou5mdl.directus.app/items/Clientes/', {
+        const response = await fetch('https://1uou5mdl.directus.app/items/Clientes?access_token=nkmP1vU2eZpzCHVbe2R5dIJxdYJYOJYN', {
             method: 'POST',
             body: JSON.stringify(customer),
             headers: {
@@ -109,6 +109,8 @@ const NewCustomer = (props) => {
     const secondSurnameRef = useRef(null);
     const maleRef = useRef(null);
     const femaleRef = useRef(null);
+
+    // nameRef.current.focus();
 
     const createCustomerHandler = (event) => {
         event.preventDefault();
@@ -191,7 +193,7 @@ const NewCustomer = (props) => {
         <form className={formClasses}>
             <h3>New customer data</h3>
 
-            <input type="text" ref={nameRef} required></input>
+            <input type="text" ref={nameRef} autoFocus required></input>
             <label>Name</label>
             <input type="text" ref={surnameRef} required></input>
             <label>Surname</label>

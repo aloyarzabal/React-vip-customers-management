@@ -5,7 +5,7 @@
     margin: 10px;
     justify-content: space-around;
     max-width: 100%;
-    min-width: 500px;
+    min-width: 250px;
     background: linear-gradient(135deg, #c4d06a 10%, white 10%);
     box-shadow: 4px 4px 6px grey;
     border-radius: 10px;
@@ -18,7 +18,7 @@
 
 @media (max-width: 1300px) {
     .customerFile {
-        transform: scale(0.9) translateX(-40px);
+        transform: scale(0.9);
     }
 }
 
@@ -36,6 +36,8 @@
     .mainStats {
         border-left: 0px solid lightgray !important;
         border-top: 2px solid lightgray;
+        padding-top: 10px !important;
+        margin-top: 10px !important;
     }
 
     .tittleFeature {
